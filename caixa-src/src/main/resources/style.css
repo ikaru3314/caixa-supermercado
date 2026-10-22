@@ -1,0 +1,1324 @@
+/* =====================================================================
+   TEMA DO CAIXA  -  para mudar o visual, mexa só nesta primeira parte
+   ===================================================================== */
+
+.root {
+    /* ---------- PALETA (Holst) ---------- */
+    -cor-1: #172B4D;   /* mais escuro  : textos fortes, fundo do banner   */
+    -cor-2: #203864;   /* escuro       : banner, títulos                  */
+    -cor-3: #2457A7;   /* médio escuro : hover dos botões principais      */
+    -cor-4: #3478F6;   /* principal    : botão FINALIZAR, AJUDA, destaques */
+    -cor-5: #B7CCF5;   /* médio claro  : bordas, etapa atual              */
+    -cor-6: #E0E9F8;   /* claro        : botões comuns do rodapé          */
+    -cor-7: #F3F6FB;   /* mais claro   : fundo da tela                    */
+
+    /* ---------- CORES DE APOIO ---------- */
+    -cor-fundo-painel: #FFFFFF;       /* caixas brancas (lista, campos)     */
+    -cor-texto: #243247;            /* texto normal                       */
+    -cor-texto-claro: white;        /* texto sobre fundo escuro           */
+    -cor-perigo: #C0392B;           /* botão VOLTAR / mensagens de erro   */
+    -cor-perigo-hover: #A93226;
+    -cor-sucesso: #16845B;          /* mensagens de sucesso               */
+
+    /* ---------- FONTE ---------- */
+    /* TAMANHO BASE: aumente/diminua este número e TODOS os textos
+       acompanham (os demais tamanhos abaixo são proporcionais, em "em"). */
+    -fx-font-size: 16px;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+    -fx-background-color: -cor-7;
+    -fx-text-fill: -cor-texto;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* =====================================================================
+   TAMANHOS DOS TEXTOS  (1em = tamanho base acima)
+   ===================================================================== */
+.etapa          { -fx-font-size: 0.75em; }
+.banner         { -fx-font-size: 1.9em;  }
+.titulo-secao   { -fx-font-size: 1.4em;  }
+.rotulo-campo   { -fx-font-size: 1.2em;  }
+.campo          { -fx-font-size: 1.3em;  }
+.campo-grande   { -fx-font-size: 2.1em;  }
+.texto-grande   { -fx-font-size: 2.1em;  }
+.texto-medio    { -fx-font-size: 1.25em; }
+.btn-rodape     { -fx-font-size: 0.85em; }
+.btn-grande     { -fx-font-size: 1.75em; }
+.btn-opcao      { -fx-font-size: 1.35em; }
+.tecla          { -fx-font-size: 1.5em;  }
+.msg-erro, .msg-ok { -fx-font-size: 1em; }
+
+/* =====================================================================
+   BARRA DE ETAPAS
+   ===================================================================== */
+.etapas {
+    -fx-background-color: -cor-fundo-painel;
+    -fx-border-color: -cor-6;
+    -fx-border-width: 0 0 1 0;
+}
+.etapa {
+    -fx-text-fill: -cor-3;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-padding: 8 0 8 0;
+    -fx-border-color: transparent transparent -cor-6 transparent;
+    -fx-border-width: 0 0 3 0;
+}
+.etapa-atual {
+    -fx-text-fill: -cor-4;
+    -fx-border-color: transparent transparent -cor-4 transparent;
+}
+
+/* =====================================================================
+   TOPO (banner + AJUDA)
+   ===================================================================== */
+.banner {
+    -fx-background-color: -cor-2;
+    -fx-background-radius: 14;
+    -fx-text-fill: -cor-texto-claro;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-padding: 12 0 12 0;
+}
+
+/* =====================================================================
+   BOTÕES  (todos arredondados, com sombra suave)
+   ===================================================================== */
+.button {
+    -fx-background-radius: 14;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(4,34,43,0.25), 6, 0.1, 0, 2);
+}
+.button:pressed {
+    -fx-translate-y: 1;
+    -fx-effect: dropshadow(gaussian, rgba(4,34,43,0.15), 3, 0.1, 0, 1);
+}
+.button:disabled { -fx-opacity: 0.45; }
+
+.btn-ajuda {
+    -fx-background-color: -cor-4;
+    -fx-text-fill: -cor-texto-claro;
+    -fx-pref-width: 120;
+    -fx-pref-height: 56;
+}
+.btn-ajuda:hover { -fx-background-color: -cor-3; }
+
+/* botão comum do rodapé */
+.btn-rodape {
+    -fx-background-color: -cor-6;
+    -fx-text-fill: -cor-1;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+}
+.btn-rodape:hover { -fx-background-color: -cor-5; }
+
+/* VOLTAR */
+.btn-voltar { -fx-background-color: -cor-perigo; -fx-text-fill: -cor-texto-claro; }
+.btn-voltar:hover { -fx-background-color: -cor-perigo-hover; }
+
+/* FINALIZAR / CONFIRMAR (ação principal) */
+.btn-finalizar { -fx-background-color: -cor-4; -fx-text-fill: -cor-texto-claro; }
+.btn-finalizar:hover { -fx-background-color: -cor-3; }
+
+/* botão gigante da tela inicial */
+.btn-grande {
+    -fx-background-color: -cor-4;
+    -fx-text-fill: -cor-texto-claro;
+    -fx-pref-width: 520;
+    -fx-pref-height: 120;
+    -fx-background-radius: 24;
+}
+.btn-grande:hover { -fx-background-color: -cor-3; }
+
+/* botões grandes de escolha (pagamento) */
+.btn-opcao {
+    -fx-background-color: -cor-6;
+    -fx-text-fill: -cor-1;
+    -fx-pref-width: 300;
+    -fx-pref-height: 110;
+    -fx-background-radius: 20;
+}
+.btn-opcao:hover { -fx-background-color: -cor-5; }
+
+/* link pequeno "remover item selecionado" */
+.btn-link {
+    -fx-background-color: transparent;
+    -fx-text-fill: -cor-perigo;
+    -fx-font-size: 0.8em;
+    -fx-underline: true;
+    -fx-effect: null;
+}
+
+/* teclado numérico */
+.tecla {
+    -fx-background-color: -cor-6;
+    -fx-text-fill: -cor-1;
+    -fx-pref-width: 90;
+    -fx-pref-height: 64;
+}
+.tecla:hover { -fx-background-color: -cor-5; }
+
+/* =====================================================================
+   PAINÉIS, CAMPOS E TABELA
+   ===================================================================== */
+.painel {
+    -fx-background-color: -cor-fundo-painel;
+    -fx-background-radius: 14;
+    -fx-border-color: -cor-6;
+    -fx-border-radius: 14;
+}
+.titulo-secao { -fx-text-fill: -cor-2; -fx-font-weight: bold; }
+.rotulo-campo { -fx-text-fill: -cor-2; }
+
+.campo {
+    -fx-background-color: -cor-fundo-painel;
+    -fx-background-radius: 10;
+    -fx-border-color: -cor-5;
+    -fx-border-radius: 10;
+    -fx-text-fill: -cor-texto;
+    -fx-pref-height: 46;
+}
+.campo:focused { -fx-border-color: -cor-4; -fx-border-width: 2; }
+.campo-direita { -fx-alignment: center-right; }
+.campo-grande  { -fx-alignment: center; -fx-pref-height: 64; }
+
+.total-linha { -fx-font-size: 1em; -fx-font-weight: bold; -fx-text-fill: -cor-2; }
+.texto-grande { -fx-font-weight: bold; -fx-text-fill: -cor-2; }
+.texto-medio  { -fx-text-fill: -cor-1; }
+
+.msg-erro { -fx-text-fill: -cor-perigo; -fx-font-weight: bold; }
+.msg-ok   { -fx-text-fill: -cor-sucesso; -fx-font-weight: bold; }
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+}
+.table-view .column-header-background { -fx-background-color: -cor-7; }
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: -cor-7;
+    -fx-border-color: transparent;
+}
+.table-view .column-header .label {
+    -fx-font-size: 0.75em;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cor-2;
+}
+.table-view .table-cell { -fx-font-size: 0.9em; -fx-text-fill: -cor-texto; }
+.table-row-cell:selected { -fx-background-color: -cor-6; }
+.table-row-cell:selected .table-cell { -fx-text-fill: -cor-1; }
+
+.cupom { -fx-font-family: "Consolas", "Courier New", monospace; -fx-font-size: 0.85em; }
+.qr-falso {
+    -fx-background-color: white;
+    -fx-border-color: -cor-1;
+    -fx-border-width: 3;
+}
+.qr-texto { -fx-text-alignment: center; -fx-font-weight: bold; }
+
+/* =====================================================================
+   ASSISTENTE DE AJUDA (chat)
+   ===================================================================== */
+.chat-fundo { -fx-background-color: -cor-7; }
+.bolha-ia {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-padding: 10 14 10 14;
+    -fx-font-size: 0.95em;
+}
+.bolha-usuario {
+    -fx-background-color: -cor-6;
+    -fx-background-radius: 14;
+    -fx-padding: 10 14 10 14;
+    -fx-font-size: 0.95em;
+}
+.chip {
+    -fx-background-color: white;
+    -fx-border-color: -cor-4;
+    -fx-border-radius: 16;
+    -fx-background-radius: 16;
+    -fx-text-fill: -cor-2;
+    -fx-font-size: 0.78em;
+    -fx-font-weight: normal;
+    -fx-effect: null;
+}
+.chip:hover { -fx-background-color: -cor-7; }
+.btn-enviar {
+    -fx-background-color: -cor-4;
+    -fx-text-fill: -cor-texto-claro;
+    -fx-pref-height: 40;
+}
+.btn-enviar:hover { -fx-background-color: -cor-3; }
+.btn-fechar {
+    -fx-background-color: -cor-3;
+    -fx-text-fill: -cor-texto-claro;
+    -fx-pref-height: 40;
+}
+.btn-fechar:hover { -fx-background-color: -cor-2; }
+.selo-ia { -fx-font-size: 0.72em; -fx-text-fill: -cor-3; }
+
+/* janelas de aviso/confirmação */
+.dialog-pane { -fx-background-color: -cor-7; }
+.dialog-pane .header-panel { -fx-background-color: -cor-6; }
+.dialog-pane .header-panel .label { -fx-text-fill: -cor-1; -fx-font-weight: bold; }
+
+/* =====================================================================
+   TELA DE VENDA (estilo PDV)
+   ===================================================================== */
+.btn-ajuda { -fx-text-alignment: center; }
+
+/* faixa "CAIXA ABERTO" / mensagens */
+.pdv-status {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: -cor-5;
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+    -fx-text-fill: -cor-2;
+    -fx-font-size: 1.8em;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-padding: 8 12 8 12;
+}
+.pdv-status-erro { -fx-text-fill: -cor-perigo; }
+
+/* caixinha "SEM CPF" / "CPF NA NOTA" */
+.pdv-cpf {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: -cor-5;
+    -fx-border-radius: 10;
+    -fx-text-fill: -cor-3;
+    -fx-font-size: 0.8em;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+/* painéis com título escuro */
+.pdv-bloco {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: -cor-5;
+    -fx-border-radius: 8;
+}
+.pdv-bloco-titulo {
+    -fx-background-color: -cor-2;
+    -fx-background-radius: 8 8 0 0;
+    -fx-text-fill: -cor-texto-claro;
+    -fx-font-size: 0.72em;
+    -fx-font-weight: bold;
+    -fx-padding: 4 10 4 10;
+}
+.pdv-bloco-corpo { -fx-padding: 4; }
+.pdv-lista-titulo {
+    -fx-background-color: -cor-2;
+    -fx-background-radius: 8 8 0 0;
+    -fx-text-fill: -cor-texto-claro;
+    -fx-font-size: 0.9em;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-padding: 5 10 5 10;
+}
+
+/* valores */
+.pdv-valor {
+    -fx-font-size: 1.7em;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cor-1;
+    -fx-alignment: center-right;
+    -fx-padding: 2 8 2 8;
+}
+.pdv-valor-grande {
+    -fx-font-size: 3.2em;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cor-2;
+    -fx-alignment: center-right;
+    -fx-padding: 0 12 0 12;
+}
+
+/* ícone do carrinho (desenhado em código, cor controlada aqui) */
+.pdv-quadro-carrinho {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: -cor-5;
+    -fx-border-radius: 8;
+}
+.carrinho {
+    -fx-fill: transparent;
+    -fx-stroke: -cor-4;
+    -fx-stroke-width: 1.8;
+    -fx-stroke-line-cap: round;
+    -fx-stroke-line-join: round;
+}
+
+/* "Área do gerente" (discreto, na tela inicial) */
+.btn-gerente {
+    -fx-background-color: transparent;
+    -fx-text-fill: -cor-3;
+    -fx-font-size: 0.75em;
+    -fx-underline: true;
+    -fx-effect: null;
+}
+.btn-gerente:hover { -fx-text-fill: -cor-1; }
+
+/* formulário de produto */
+.rotulo-form { -fx-text-fill: -cor-2; -fx-font-weight: bold; }
+
+/* botões de atalho (F2, F3, ...) */
+.btn-atalho {
+    -fx-font-size: 0.75em;
+    -fx-pref-height: 44;
+    -fx-padding: 4 6 4 6;
+    -fx-background-radius: 8;
+}
+
+/* =====================================================================
+   TELA DE COMPRA ESTILO PDV  (cores vêm da paleta lá de cima)
+   ===================================================================== */
+.pdv-area { -fx-background-color: -cor-2; }
+
+.pdv-status {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-text-fill: -cor-2;
+    -fx-font-size: 2.1em;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-padding: 4 12 4 12;
+}
+.pdv-status-erro { -fx-text-fill: -cor-perigo; -fx-font-size: 1.4em; }
+
+.pdv-caixa {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: -cor-5;
+    -fx-border-radius: 8;
+    -fx-alignment: center;
+}
+.pdv-titulo {
+    -fx-background-color: -cor-3;
+    -fx-background-radius: 8 8 0 0;
+    -fx-text-fill: white;
+    -fx-font-size: 0.75em;
+    -fx-font-weight: bold;
+    -fx-padding: 3 8 3 8;
+}
+.pdv-valor        { -fx-font-size: 1.7em; -fx-font-weight: bold; -fx-text-fill: -cor-2; -fx-padding: 4 10 6 10; }
+.pdv-valor-medio  { -fx-font-size: 1.7em; -fx-font-weight: bold; -fx-text-fill: -cor-2; -fx-padding: 6 10 8 10; }
+.pdv-subtotal     { -fx-font-size: 3em;   -fx-font-weight: bold; -fx-text-fill: -cor-2; -fx-padding: 0 14 4 14; }
+
+/* carrinho desenhado */
+.carrinho-linha {
+    -fx-fill: transparent;
+    -fx-stroke: -cor-4;
+    -fx-stroke-width: 7;
+    -fx-stroke-line-cap: round;
+    -fx-stroke-line-join: round;
+}
+.carrinho-cesto {
+    -fx-fill: -cor-6;
+    -fx-stroke: -cor-4;
+    -fx-stroke-width: 7;
+    -fx-stroke-line-join: round;
+}
+.carrinho-roda { -fx-fill: -cor-2; }
+
+/* barra lateral */
+.pdv-lateral { -fx-background-color: -cor-1; -fx-padding: 18 14 14 14; }
+.pdv-marca     { -fx-text-fill: -cor-6; -fx-font-size: 1.6em; -fx-font-weight: bold; }
+.pdv-marca-sub { -fx-text-fill: -cor-5; -fx-font-size: 0.75em; -fx-font-weight: bold; }
+.pdv-relogio   { -fx-text-fill: white;  -fx-font-size: 0.95em; -fx-font-weight: bold; }
+.pdv-atalhos {
+    -fx-text-fill: -cor-6;
+    -fx-font-family: "Consolas", "Courier New", monospace;
+    -fx-font-size: 0.85em;
+    -fx-line-spacing: 4;
+}
+
+
+/* =====================================================================
+   REFINAMENTO VISUAL — tema moderno azul, branco e cinza
+   ===================================================================== */
+.root {
+    -fx-font-family: "Segoe UI", "Inter", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #F3F6FB;
+}
+.label { -fx-text-fill: #243247; }
+.banner {
+    -fx-background-color: linear-gradient(to right, #203864, #2F5597);
+    -fx-background-radius: 12;
+    -fx-padding: 16 18 16 18;
+    -fx-font-size: 1.45em;
+    -fx-effect: dropshadow(gaussian, rgba(23,43,77,0.12), 12, 0.12, 0, 3);
+}
+.button {
+    -fx-background-radius: 10;
+    -fx-padding: 11 16 11 16;
+    -fx-font-size: 0.95em;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(23,43,77,0.10), 8, 0.10, 0, 2);
+    -fx-transition: all 0.2s;
+}
+.button:hover { -fx-cursor: hand; }
+.btn-ajuda {
+    -fx-background-color: #3478F6;
+    -fx-text-fill: white;
+    -fx-pref-width: 112;
+    -fx-pref-height: 52;
+}
+.btn-ajuda:hover, .btn-finalizar:hover { -fx-background-color: #2457A7; }
+.btn-rodape {
+    -fx-background-color: #E7EDF7;
+    -fx-text-fill: #203864;
+    -fx-background-radius: 10;
+    -fx-border-color: #D5DFEF;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+}
+.btn-rodape:hover { -fx-background-color: #D7E4FA; }
+.btn-finalizar, .btn-grande {
+    -fx-background-color: #3478F6;
+    -fx-text-fill: white;
+}
+.btn-voltar { -fx-background-color: #D94848; -fx-text-fill: white; }
+.btn-voltar:hover { -fx-background-color: #B83232; }
+.btn-grande {
+    -fx-pref-width: 440;
+    -fx-pref-height: 92;
+    -fx-background-radius: 16;
+    -fx-font-size: 1.5em;
+}
+.btn-opcao {
+    -fx-background-color: white;
+    -fx-text-fill: #203864;
+    -fx-border-color: #D5DFEF;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+}
+.btn-opcao:hover { -fx-background-color: #EDF3FF; -fx-border-color: #3478F6; }
+.painel, .pdv-bloco {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-border-color: #E1E7F0;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+    -fx-padding: 14;
+    -fx-effect: dropshadow(gaussian, rgba(23,43,77,0.06), 12, 0.08, 0, 3);
+}
+.campo, .text-field, .password-field, .combo-box, .date-picker {
+    -fx-background-color: white;
+    -fx-background-radius: 9;
+    -fx-border-color: #CDD7E6;
+    -fx-border-radius: 9;
+    -fx-border-width: 1;
+    -fx-padding: 10 12 10 12;
+    -fx-text-fill: #243247;
+}
+.campo:focused, .text-field:focused, .password-field:focused,
+.combo-box:focused, .date-picker:focused {
+    -fx-border-color: #3478F6;
+    -fx-border-width: 1.6;
+}
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #E1E7F0;
+    -fx-border-radius: 10;
+    -fx-padding: 4;
+}
+.table-view .column-header-background { -fx-background-color: #EDF2FA; }
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #EDF2FA;
+    -fx-size: 42;
+    -fx-border-color: transparent transparent #DCE4F0 transparent;
+}
+.table-view .column-header .label {
+    -fx-text-fill: #203864;
+    -fx-font-weight: bold;
+    -fx-padding: 10 8 10 8;
+}
+.table-row-cell { -fx-background-color: white; -fx-cell-size: 42px; }
+.table-row-cell:odd { -fx-background-color: #F8FAFD; }
+.table-row-cell:selected { -fx-background-color: #DCE8FF; }
+.table-row-cell:selected .text { -fx-fill: #203864; }
+.etapas {
+    -fx-background-color: white;
+    -fx-border-color: #E1E7F0;
+    -fx-padding: 8 12 4 12;
+}
+.etapa {
+    -fx-text-fill: #64748B;
+    -fx-padding: 12 8 12 8;
+    -fx-border-color: transparent transparent #E1E7F0 transparent;
+}
+.etapa-atual {
+    -fx-text-fill: #3478F6;
+    -fx-border-color: transparent transparent #3478F6 transparent;
+}
+.texto-grande { -fx-text-fill: #203864; -fx-font-size: 2em; }
+.texto-medio { -fx-text-fill: #64748B; }
+.titulo-secao, .rotulo-campo { -fx-text-fill: #203864; }
+.msg-ok { -fx-text-fill: #16845B; }
+.msg-erro { -fx-text-fill: #D94848; }
+.btn-gerente {
+    -fx-background-color: transparent;
+    -fx-text-fill: #64748B;
+    -fx-border-color: #D5DFEF;
+    -fx-border-radius: 9;
+    -fx-background-radius: 9;
+    -fx-effect: none;
+}
+.btn-gerente:hover { -fx-background-color: #E7EDF7; }
+.pdv-status {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: #E1E7F0;
+    -fx-border-radius: 12;
+    -fx-padding: 14 18 14 18;
+    -fx-font-size: 1.2em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #203864;
+}
+.pdv-cpf {
+    -fx-background-color: #E7EDF7;
+    -fx-background-radius: 10;
+    -fx-padding: 12;
+    -fx-text-fill: #203864;
+    -fx-alignment: center;
+}
+.pdv-quadro-carrinho {
+    -fx-background-color: linear-gradient(to bottom right, #EAF1FF, #DCE8FF);
+    -fx-background-radius: 14;
+    -fx-border-color: #D1DFFF;
+    -fx-border-radius: 14;
+}
+.carrinho { -fx-fill: #3478F6; -fx-stroke: #3478F6; }
+.pdv-lista-titulo {
+    -fx-background-color: #EDF2FA;
+    -fx-text-fill: #203864;
+    -fx-font-weight: bold;
+    -fx-padding: 12;
+    -fx-background-radius: 9;
+}
+
+
+/* =====================================================================
+   AJUSTES FINAIS DE INTERFACE
+   Contraste do cabeçalho, espaçamento e estados de interação.
+   ===================================================================== */
+.banner {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 1.35em;
+    -fx-font-weight: 800;
+    -fx-alignment: center;
+    -fx-min-height: 56px;
+    -fx-padding: 14 20 14 20;
+    -fx-background-color: linear-gradient(to right, #203864, #315A9B);
+    -fx-background-radius: 13;
+    -fx-effect: dropshadow(gaussian, rgba(23,43,77,0.16), 10, 0.12, 0, 3);
+}
+
+/* O cabeçalho mantém contraste mesmo com regras gerais para Labels. */
+.label.banner { -fx-text-fill: #FFFFFF; }
+
+.etapas {
+    -fx-padding: 7 14 4 14;
+    -fx-border-color: transparent transparent #DCE4F0 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.etapa {
+    -fx-font-size: 0.82em;
+    -fx-font-weight: 600;
+    -fx-padding: 11 7 11 7;
+}
+.etapa-atual { -fx-font-weight: 800; }
+
+.button {
+    -fx-cursor: hand;
+    -fx-background-insets: 0;
+    -fx-background-radius: 11;
+    -fx-padding: 11 17 11 17;
+}
+.button:focused { -fx-border-color: #8DB2FF; -fx-border-radius: 11; }
+.btn-ajuda {
+    -fx-pref-width: 112;
+    -fx-pref-height: 56;
+    -fx-background-radius: 12;
+    -fx-font-size: 0.88em;
+}
+.btn-grande {
+    -fx-pref-width: 440;
+    -fx-pref-height: 92;
+    -fx-font-size: 1.42em;
+    -fx-background-radius: 17;
+    -fx-effect: dropshadow(gaussian, rgba(52,120,246,0.24), 14, 0.12, 0, 4);
+}
+.btn-grande:hover {
+    -fx-background-color: #2457A7;
+    -fx-translate-y: -1;
+}
+.btn-gerente {
+    -fx-padding: 10 14 10 14;
+    -fx-font-size: 0.78em;
+    -fx-font-weight: 700;
+}
+
+.campo, .text-field, .password-field, .combo-box, .date-picker {
+    -fx-min-height: 44px;
+    -fx-background-insets: 0;
+}
+.text-field:focused, .password-field:focused, .combo-box:focused, .date-picker:focused {
+    -fx-border-color: #3478F6;
+    -fx-border-width: 1.8;
+    -fx-effect: dropshadow(gaussian, rgba(52,120,246,0.10), 5, 0.1, 0, 1);
+}
+
+.table-view {
+    -fx-background-insets: 0;
+    -fx-padding: 3;
+    -fx-fixed-cell-size: 42px;
+}
+.table-view .column-header .label {
+    -fx-text-fill: #203864;
+    -fx-font-size: 0.78em;
+    -fx-font-weight: 800;
+}
+.table-row-cell:selected { -fx-background-color: #DCE8FF; }
+.table-row-cell:selected .table-cell { -fx-text-fill: #172B4D; }
+.table-row-cell:focused { -fx-background-insets: 0; }
+
+.painel, .pdv-bloco {
+    -fx-background-radius: 13;
+    -fx-border-radius: 13;
+    -fx-border-width: 1;
+}
+.btn-rodape { -fx-min-height: 60px; }
+.btn-voltar:hover { -fx-background-color: #B83232; }
+.btn-finalizar:hover, .btn-ajuda:hover { -fx-background-color: #2457A7; }
+.msg-ok, .msg-erro { -fx-padding: 5 2 5 2; }
+
+/* =====================================================================
+   IDENTIDADE VISUAL FRESHCART — aplicada a todas as etapas do autoatendimento
+   Inspirada no painel de referência enviado: fundo azul muito claro,
+   superfícies brancas, cantos suaves e acento verde para ações positivas.
+   ===================================================================== */
+.root {
+    -cor-1: #24364B;
+    -cor-2: #203B68;
+    -cor-3: #2E5594;
+    -cor-4: #3478F6;
+    -cor-5: #D5E1F0;
+    -cor-6: #E8EEF7;
+    -cor-7: #F2F6FC;
+    -cor-fundo-painel: #FFFFFF;
+    -cor-texto: #29384B;
+    -cor-texto-claro: #FFFFFF;
+    -cor-perigo: #D94A50;
+    -cor-perigo-hover: #B8323B;
+    -cor-sucesso: #0EA66B;
+    -fx-background-color: #F2F6FC;
+    -fx-font-family: "Segoe UI", "Inter", Arial, sans-serif;
+    -fx-font-size: 14px;
+}
+
+.label { -fx-text-fill: #29384B; }
+.etapas {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 8 18 4 18;
+    -fx-border-color: transparent transparent #DFE7F2 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.etapa {
+    -fx-text-fill: #64748B;
+    -fx-font-size: 0.84em;
+    -fx-font-weight: 600;
+    -fx-padding: 11 8 12 8;
+    -fx-border-color: transparent transparent transparent transparent;
+}
+.etapa-atual {
+    -fx-text-fill: #3478F6;
+    -fx-border-color: transparent transparent #3478F6 transparent;
+    -fx-border-width: 0 0 3 0;
+}
+.banner {
+    -fx-background-color: linear-gradient(to right, #203B68, #315A9B);
+    -fx-background-radius: 13;
+    -fx-text-fill: white;
+    -fx-font-size: 1.35em;
+    -fx-font-weight: 800;
+    -fx-min-height: 56px;
+    -fx-padding: 14 20 14 20;
+    -fx-effect: dropshadow(gaussian, rgba(32,59,104,0.12), 12, 0.12, 0, 3);
+}
+.label.banner { -fx-text-fill: white; }
+.button {
+    -fx-background-radius: 11;
+    -fx-padding: 11 17 11 17;
+    -fx-font-weight: 700;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(32,59,104,0.09), 7, 0.10, 0, 2);
+}
+.button:focused { -fx-border-color: #A9C7FF; -fx-border-radius: 11; }
+.btn-ajuda {
+    -fx-background-color: #3478F6;
+    -fx-text-fill: white;
+    -fx-pref-width: 112;
+    -fx-pref-height: 56;
+    -fx-background-radius: 12;
+}
+.btn-ajuda:hover, .btn-finalizar:hover { -fx-background-color: #2457A7; }
+.btn-rodape {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #28436C;
+    -fx-border-color: #D8E2F0;
+    -fx-border-radius: 11;
+    -fx-background-radius: 11;
+    -fx-border-width: 1;
+    -fx-min-height: 58px;
+}
+.btn-rodape:hover { -fx-background-color: #EAF2FF; }
+.btn-finalizar { -fx-background-color: #0EA66B; -fx-text-fill: white; }
+.btn-finalizar:hover { -fx-background-color: #078857; }
+.btn-voltar { -fx-background-color: #D94A50; -fx-text-fill: white; }
+.btn-voltar:hover { -fx-background-color: #B8323B; }
+.btn-grande {
+    -fx-background-color: #0EA66B;
+    -fx-text-fill: white;
+    -fx-pref-width: 420;
+    -fx-pref-height: 72;
+    -fx-font-size: 1.15em;
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(14,166,107,0.22), 15, 0.12, 0, 4);
+}
+.btn-grande:hover { -fx-background-color: #078857; -fx-translate-y: -1; }
+.btn-opcao {
+    -fx-background-color: white;
+    -fx-text-fill: #203B68;
+    -fx-border-color: #D8E2F0;
+    -fx-border-width: 1.2;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+    -fx-pref-width: 300;
+    -fx-pref-height: 100;
+}
+.btn-opcao:hover { -fx-background-color: #F0FAF6; -fx-border-color: #7BD5B0; }
+.campo, .text-field, .password-field, .combo-box, .date-picker {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-border-color: #D7E2F0;
+    -fx-border-radius: 10;
+    -fx-text-fill: #29384B;
+    -fx-prompt-text-fill: #8A98AA;
+    -fx-min-height: 44px;
+}
+.text-field:focused, .password-field:focused, .combo-box:focused, .date-picker:focused,
+.campo:focused { -fx-border-color: #3478F6; -fx-border-width: 1.6; }
+.painel, .pdv-bloco, .pdv-caixa {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-border-color: #E0E8F2;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+}
+.table-view {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-border-color: #E2E9F2;
+    -fx-border-radius: 10;
+    -fx-padding: 3;
+    -fx-fixed-cell-size: 42px;
+    -fx-table-cell-border-color: transparent;
+}
+.table-view .column-header-background { -fx-background-color: #F2F6FC; -fx-background-radius: 9 9 0 0; }
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #F2F6FC;
+    -fx-border-color: transparent transparent #E2E9F2 transparent;
+}
+.table-view .column-header .label { -fx-text-fill: #53657B; -fx-font-size: 0.78em; -fx-font-weight: 800; }
+.table-view .table-cell { -fx-text-fill: #29384B; -fx-padding: 8 10 8 10; }
+.table-row-cell { -fx-background-color: white; -fx-border-color: transparent transparent #EDF1F6 transparent; }
+.table-row-cell:odd { -fx-background-color: #FBFCFE; }
+.table-row-cell:selected { -fx-background-color: #E3F4ED; }
+.table-row-cell:selected .table-cell { -fx-text-fill: #203B68; }
+.dialog-pane { -fx-background-color: #F2F6FC; }
+.dialog-pane .header-panel { -fx-background-color: #E8EEF7; }
+.dialog-pane .header-panel .label { -fx-text-fill: #203B68; -fx-font-weight: bold; }
+
+/* Tela inicial: cartão de boas-vindas limpo e espaçoso */
+.tela-inicio { -fx-background-color: #F2F6FC; }
+.inicio-cartao {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 24;
+    -fx-border-color: #E2EAF4;
+    -fx-border-radius: 24;
+    -fx-effect: dropshadow(gaussian, rgba(39,63,99,0.08), 22, 0.12, 0, 6);
+}
+.inicio-eyebrow { -fx-text-fill: #0B9860; -fx-font-size: 0.82em; -fx-font-weight: 800; }
+.inicio-titulo { -fx-text-fill: #203B68; -fx-font-size: 2.2em; -fx-font-weight: 800; }
+.inicio-descricao { -fx-text-fill: #64748B; -fx-font-size: 1.05em; -fx-line-spacing: 4; }
+.inicio-passo { -fx-text-fill: #5C6E83; -fx-font-size: 0.82em; -fx-font-weight: 600; }
+.btn-gerente {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #536A89;
+    -fx-border-color: #D9E4F2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-font-size: 0.78em;
+    -fx-effect: null;
+}
+.btn-gerente:hover { -fx-background-color: #EAF2FF; -fx-text-fill: #203B68; }
+
+/* Gerenciamento de produtos: resumo em cartões + tabela principal */
+.tela-produtos { -fx-background-color: #F2F6FC; }
+.produtos-subtitulo { -fx-text-fill: #203B68; -fx-font-size: 1.35em; -fx-font-weight: 800; }
+.produtos-descricao { -fx-text-fill: #738196; -fx-font-size: 0.92em; }
+.produtos-metricas { -fx-spacing: 12; }
+.produto-metrica {
+    -fx-padding: 14 18 14 18;
+    -fx-background-color: white;
+    -fx-background-radius: 13;
+    -fx-border-color: #E1E9F3;
+    -fx-border-radius: 13;
+    -fx-min-height: 78;
+}
+.produto-metrica-azul { -fx-border-color: #D7E5FC; }
+.produto-metrica-verde { -fx-border-color: #CBECDD; }
+.produto-metrica-roxo { -fx-border-color: #E4DDF7; }
+.produto-metrica-titulo { -fx-text-fill: #77869A; -fx-font-size: 0.74em; -fx-font-weight: 800; }
+.produto-metrica-valor { -fx-text-fill: #203B68; -fx-font-size: 1.65em; -fx-font-weight: 800; }
+.produtos-busca-linha { -fx-padding: 2 0 0 0; }
+.produtos-contagem { -fx-text-fill: #64748B; -fx-font-size: 0.9em; -fx-padding: 0 4 0 4; }
+.produtos-tabela-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-border-color: #E0E8F2;
+    -fx-border-radius: 15;
+    -fx-padding: 12;
+}
+
+/* Caixa de venda e cartões de valores */
+.pdv-status { -fx-background-color: white; -fx-border-color: #DCE6F2; -fx-text-fill: #203B68; -fx-background-radius: 12; -fx-border-radius: 12; }
+.pdv-cpf { -fx-background-color: #F0FAF6; -fx-border-color: #BDEAD7; -fx-text-fill: #078857; -fx-background-radius: 11; -fx-border-radius: 11; }
+.pdv-lista-titulo, .pdv-bloco-titulo { -fx-background-color: #203B68; -fx-background-radius: 10 10 0 0; }
+.pdv-valor-grande, .pdv-subtotal { -fx-text-fill: #0A9861; }
+.pdv-quadro-carrinho { -fx-background-color: #F0FAF6; -fx-border-color: #CDEEDF; -fx-background-radius: 13; -fx-border-radius: 13; }
+
+/* =====================================================================
+   FRESHCART 2.0 — acabamento compartilhado para TODAS as telas
+   Fundo frio, superfícies brancas, tipografia limpa e ações verdes.
+   ===================================================================== */
+.root {
+    -fx-background-color: #F1F5FB;
+    -fx-font-family: "Segoe UI", "Inter", Arial, sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* Navegação de etapas no topo */
+.etapas {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 8 18 3 18;
+    -fx-border-color: transparent transparent #E2E9F2 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.etapa {
+    -fx-text-fill: #718096;
+    -fx-font-size: 0.84em;
+    -fx-font-weight: 600;
+    -fx-padding: 10 8 12 8;
+    -fx-border-color: transparent transparent transparent transparent;
+}
+.etapa-atual {
+    -fx-text-fill: #3478F6;
+    -fx-font-weight: 800;
+    -fx-border-color: transparent transparent #3478F6 transparent;
+    -fx-border-width: 0 0 3 0;
+}
+
+/* Cabeçalho e ajuda */
+.banner {
+    -fx-background-color: linear-gradient(to right, #203B68, #315A9B);
+    -fx-background-radius: 13;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 1.3em;
+    -fx-font-weight: 800;
+    -fx-min-height: 54px;
+    -fx-padding: 13 20 13 20;
+    -fx-effect: dropshadow(gaussian, rgba(32,59,104,0.12), 12, 0.12, 0, 3);
+}
+.label.banner { -fx-text-fill: #FFFFFF; }
+.btn-ajuda {
+    -fx-background-color: #3478F6;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 800;
+    -fx-pref-width: 112;
+    -fx-pref-height: 54;
+    -fx-background-radius: 12;
+}
+.btn-ajuda:hover { -fx-background-color: #2457A7; }
+
+/* Controles */
+.button {
+    -fx-cursor: hand;
+    -fx-background-radius: 11;
+    -fx-padding: 11 17 11 17;
+    -fx-font-weight: 700;
+    -fx-effect: dropshadow(gaussian, rgba(32,59,104,0.08), 7, 0.1, 0, 2);
+}
+.button:focused { -fx-border-color: #A9C7FF; -fx-border-radius: 11; }
+.button:pressed { -fx-translate-y: 1; }
+.btn-finalizar { -fx-background-color: #0EA66B; -fx-text-fill: white; }
+.btn-finalizar:hover { -fx-background-color: #078857; }
+.btn-voltar { -fx-background-color: #D94A50; -fx-text-fill: white; }
+.btn-voltar:hover { -fx-background-color: #B8323B; }
+.btn-rodape {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #28436C;
+    -fx-border-color: #D8E2F0;
+    -fx-border-radius: 11;
+    -fx-background-radius: 11;
+    -fx-border-width: 1;
+    -fx-min-height: 58px;
+}
+.btn-rodape:hover { -fx-background-color: #EAF2FF; }
+.btn-grande {
+    -fx-background-color: #0EA66B;
+    -fx-text-fill: white;
+    -fx-pref-width: 420;
+    -fx-pref-height: 74;
+    -fx-font-size: 1.15em;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(14,166,107,0.22), 15, 0.12, 0, 4);
+}
+.btn-grande:hover { -fx-background-color: #078857; -fx-translate-y: -1; }
+.btn-opcao {
+    -fx-background-color: white;
+    -fx-text-fill: #203B68;
+    -fx-border-color: #D8E2F0;
+    -fx-border-width: 1.2;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+    -fx-pref-width: 300;
+    -fx-pref-height: 96;
+}
+.btn-opcao:hover { -fx-background-color: #F0FAF6; -fx-border-color: #7BD5B0; }
+
+/* Campos e seletores */
+.campo, .text-field, .password-field, .combo-box, .date-picker, .text-area {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-border-color: #D7E2F0;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-text-fill: #29384B;
+    -fx-prompt-text-fill: #8A98AA;
+    -fx-min-height: 44px;
+}
+.campo:focused, .text-field:focused, .password-field:focused,
+.combo-box:focused, .date-picker:focused {
+    -fx-border-color: #3478F6;
+    -fx-border-width: 1.6;
+}
+
+/* Cartões de conteúdo das etapas CPF, pagamento e finalização */
+.area-etapa {
+    -fx-background-color: transparent;
+    -fx-padding: 26 30 28 30;
+}
+.cartao-etapa {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20;
+    -fx-border-color: #E0E8F2;
+    -fx-border-radius: 20;
+    -fx-border-width: 1;
+    -fx-padding: 28 34 28 34;
+    -fx-effect: dropshadow(gaussian, rgba(39,63,99,0.07), 20, 0.1, 0, 5);
+}
+.texto-grande { -fx-text-fill: #203B68; -fx-font-size: 1.9em; -fx-font-weight: 800; }
+.texto-medio { -fx-text-fill: #64748B; -fx-font-size: 1.08em; }
+.rotulo-campo, .titulo-secao { -fx-text-fill: #203B68; -fx-font-weight: 700; }
+.msg-ok { -fx-text-fill: #0A9861; -fx-font-weight: 700; }
+.msg-erro { -fx-text-fill: #D94848; -fx-font-weight: 700; }
+
+/* Tela inicial */
+.tela-inicio { -fx-background-color: #F1F5FB; }
+.inicio-cartao {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 24;
+    -fx-border-color: #E2EAF4;
+    -fx-border-radius: 24;
+    -fx-effect: dropshadow(gaussian, rgba(39,63,99,0.08), 22, 0.12, 0, 6);
+}
+.inicio-eyebrow { -fx-text-fill: #0B9860; -fx-font-size: 0.82em; -fx-font-weight: 800; }
+.inicio-titulo { -fx-text-fill: #203B68; -fx-font-size: 2.2em; -fx-font-weight: 800; }
+.inicio-descricao { -fx-text-fill: #64748B; -fx-font-size: 1.05em; -fx-line-spacing: 4; }
+.inicio-passo { -fx-text-fill: #5C6E83; -fx-font-size: 0.82em; -fx-font-weight: 600; }
+.btn-gerente {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #536A89;
+    -fx-border-color: #D9E4F2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-font-size: 0.78em;
+    -fx-effect: null;
+}
+.btn-gerente:hover { -fx-background-color: #EAF2FF; -fx-text-fill: #203B68; }
+
+/* Painel do gerente e tabela de produtos */
+.tela-produtos { -fx-background-color: #F1F5FB; }
+.conteudo-gerente { -fx-background-color: transparent; }
+.produtos-subtitulo { -fx-text-fill: #203B68; -fx-font-size: 1.35em; -fx-font-weight: 800; }
+.produtos-descricao { -fx-text-fill: #738196; -fx-font-size: 0.92em; }
+.produto-metrica {
+    -fx-padding: 14 18 14 18;
+    -fx-background-color: white;
+    -fx-background-radius: 13;
+    -fx-border-color: #E1E9F3;
+    -fx-border-radius: 13;
+    -fx-min-height: 78;
+    -fx-effect: dropshadow(gaussian, rgba(32,59,104,0.045), 10, 0.1, 0, 2);
+}
+.produto-metrica-azul { -fx-border-color: #D7E5FC; }
+.produto-metrica-verde { -fx-border-color: #CBECDD; }
+.produto-metrica-roxo { -fx-border-color: #E4DDF7; }
+.produto-metrica-titulo { -fx-text-fill: #77869A; -fx-font-size: 0.74em; -fx-font-weight: 800; }
+.produto-metrica-valor { -fx-text-fill: #203B68; -fx-font-size: 1.65em; -fx-font-weight: 800; }
+.produtos-contagem { -fx-text-fill: #64748B; -fx-font-size: 0.9em; -fx-padding: 0 4 0 4; }
+.produtos-tabela-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-border-color: #E0E8F2;
+    -fx-border-radius: 15;
+    -fx-padding: 14;
+    -fx-effect: dropshadow(gaussian, rgba(39,63,99,0.05), 16, 0.1, 0, 3);
+}
+.table-view {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-border-color: #E2E9F2;
+    -fx-border-radius: 10;
+    -fx-padding: 3;
+    -fx-fixed-cell-size: 42px;
+    -fx-table-cell-border-color: transparent;
+}
+.table-view .column-header-background { -fx-background-color: #F2F6FC; -fx-background-radius: 9 9 0 0; }
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #F2F6FC;
+    -fx-border-color: transparent transparent #E2E9F2 transparent;
+}
+.table-view .column-header .label { -fx-text-fill: #53657B; -fx-font-size: 0.78em; -fx-font-weight: 800; }
+.table-view .table-cell { -fx-text-fill: #29384B; -fx-padding: 8 10 8 10; }
+.table-row-cell { -fx-background-color: white; -fx-border-color: transparent transparent #EDF1F6 transparent; }
+.table-row-cell:odd { -fx-background-color: #FBFCFE; }
+.table-row-cell:selected { -fx-background-color: #E3F4ED; }
+.table-row-cell:selected .table-cell { -fx-text-fill: #203B68; }
+
+/* Venda / carrinho: mesma linguagem visual do FreshCart */
+.pdv-status {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: #DCE6F2;
+    -fx-border-radius: 12;
+    -fx-padding: 12 18 12 18;
+    -fx-font-size: 1.15em;
+    -fx-font-weight: 800;
+    -fx-text-fill: #203B68;
+}
+.pdv-cpf { -fx-background-color: #F0FAF6; -fx-border-color: #BDEAD7; -fx-text-fill: #078857; -fx-background-radius: 11; -fx-border-radius: 11; }
+.pdv-bloco, .pdv-caixa, .pdv-quadro-carrinho {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-border-color: #E0E8F2;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+}
+.pdv-lista-titulo, .pdv-bloco-titulo { -fx-background-color: #203B68; -fx-background-radius: 10 10 0 0; -fx-text-fill: white; }
+.pdv-valor-grande, .pdv-subtotal { -fx-text-fill: #0A9861; }
+.pdv-quadro-carrinho { -fx-background-color: #F0FAF6; -fx-border-color: #CDEEDF; }
+.carrinho { -fx-fill: #0EA66B; -fx-stroke: #0EA66B; }
+
+/* Cupom e janelas auxiliares */
+.cupom { -fx-background-color: #FBFCFE; -fx-border-color: #E0E8F2; -fx-border-radius: 12; -fx-background-radius: 12; -fx-padding: 12; }
+.qr-falso { -fx-background-color: white; -fx-border-color: #D7E2F0; -fx-border-radius: 12; -fx-background-radius: 12; }
+.dialog-pane { -fx-background-color: #F1F5FB; }
+.dialog-pane .header-panel { -fx-background-color: #E8EEF7; }
+.dialog-pane .header-panel .label { -fx-text-fill: #203B68; -fx-font-weight: bold; }
+
+/* ===== Navegação lateral FreshCart ===== */
+.etapas-lateral {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 24 14 18 14;
+    -fx-spacing: 8;
+    -fx-pref-width: 232;
+    -fx-min-width: 218;
+    -fx-max-width: 245;
+    -fx-border-color: transparent #E3EAF3 transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+.etapas-cabecalho {
+    -fx-padding: 10 12 24 12;
+    -fx-border-color: transparent transparent #EDF1F6 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-spacing: 5;
+}
+.etapas-marca {
+    -fx-text-fill: #173B2F;
+    -fx-font-size: 1.55em;
+    -fx-font-weight: 900;
+}
+.etapas-subtitulo {
+    -fx-text-fill: #8A98A9;
+    -fx-font-size: 0.72em;
+    -fx-font-weight: 800;
+}
+.etapas-secao {
+    -fx-text-fill: #91A0B1;
+    -fx-font-size: 0.72em;
+    -fx-font-weight: 800;
+    -fx-padding: 18 12 8 12;
+}
+.etapas-lateral .etapa {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-padding: 0 12 0 12;
+    -fx-text-fill: #526276;
+    -fx-font-size: 0.9em;
+    -fx-font-weight: 600;
+    -fx-cursor: default;
+}
+.etapas-lateral .etapa-atual {
+    -fx-background-color: #E9F8F1;
+    -fx-text-fill: #078857;
+    -fx-font-weight: 800;
+    -fx-border-color: transparent transparent transparent #0EA66B;
+    -fx-border-width: 0 0 0 3;
+}
+.etapas-rodape {
+    -fx-background-color: #E9F8F1;
+    -fx-background-radius: 12;
+    -fx-padding: 16 12 16 12;
+    -fx-text-fill: #087F55;
+    -fx-font-size: 0.82em;
+    -fx-font-weight: 700;
+    -fx-alignment: center-left;
+    -fx-max-height: 75;
+}
+
+/* Cores refinadas e contraste dos campos editáveis */
+.root { -fx-background-color: #F2F6FC; }
+.campo, .text-field, .password-field {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #203B68;
+    -fx-prompt-text-fill: #9AA8B8;
+    -fx-border-color: #DCE5EF;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 12 14 12 14;
+}
+.campo:focused, .text-field:focused, .password-field:focused {
+    -fx-border-color: #0EA66B;
+    -fx-border-width: 1.8;
+    -fx-effect: dropshadow(gaussian, rgba(14,166,107,0.12), 8, 0.1, 0, 1);
+}
+.btn-grande:hover, .btn-finalizar:hover { -fx-background-color: #078857; }
+.btn-ajuda { -fx-background-color: #0EA66B; }
+.btn-ajuda:hover { -fx-background-color: #078857; }
+
+/* ================================================================
+   AJUSTE FINAL DE ALINHAMENTO + PALETA SOLICITADA
+   Azul principal #3478F6 | Azul escuro #234478 | Fundo #F3F6FC
+   Branco #FFFFFF | Perigo #E5484D | Bordas #DCE4F0
+   ================================================================ */
+.root {
+    -fx-background-color: #F3F6FC;
+    -fx-font-family: "Segoe UI", "Inter", Arial, sans-serif;
+}
+
+/* Barra lateral: todas as etapas começam na mesma margem esquerda. */
+.etapas-lateral {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 24 14 18 14;
+    -fx-spacing: 8;
+    -fx-pref-width: 232px;
+    -fx-min-width: 232px;
+    -fx-max-width: 232px;
+    -fx-border-color: transparent #DCE4F0 transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+.etapas-cabecalho {
+    -fx-padding: 10 12 24 12;
+    -fx-border-color: transparent transparent #DCE4F0 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.etapas-marca { -fx-text-fill: #234478; }
+.etapas-subtitulo, .etapas-secao { -fx-text-fill: #64748B; }
+.etapas-lateral .etapa {
+    -fx-alignment: center-left;
+    -fx-text-alignment: left;
+    -fx-content-display: left;
+    -fx-padding: 0 12 0 12;
+    -fx-min-width: 0;
+    -fx-pref-width: 200px;
+    -fx-max-width: 204px;
+    -fx-min-height: 48px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-text-fill: #234478;
+    -fx-font-size: 0.9em;
+    -fx-font-weight: 600;
+}
+.etapas-lateral .etapa-atual {
+    -fx-alignment: center-left;
+    -fx-background-color: #EAF1FF;
+    -fx-text-fill: #3478F6;
+    -fx-font-weight: 800;
+    -fx-border-color: transparent transparent transparent #3478F6;
+    -fx-border-width: 0 0 0 3;
+}
+.etapas-rodape {
+    -fx-background-color: #F3F6FC;
+    -fx-border-color: #DCE4F0;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-text-fill: #234478;
+}
+
+/* Cores consistentes nas telas e nos controles compartilhados. */
+.banner, .pdv-lista-titulo, .pdv-bloco-titulo {
+    -fx-background-color: linear-gradient(to right, #234478, #3478F6);
+    -fx-text-fill: #FFFFFF;
+}
+.label.banner { -fx-text-fill: #FFFFFF; }
+.btn-ajuda, .btn-finalizar {
+    -fx-background-color: #3478F6;
+    -fx-text-fill: #FFFFFF;
+}
+.btn-ajuda:hover, .btn-finalizar:hover { -fx-background-color: #234478; }
+.btn-voltar, .btn-cancelar, .btn-excluir {
+    -fx-background-color: #E5484D;
+    -fx-text-fill: #FFFFFF;
+}
+.btn-voltar:hover, .btn-cancelar:hover, .btn-excluir:hover { -fx-background-color: #C9363D; }
+.text-field, .password-field, .campo {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #234478;
+    -fx-prompt-text-fill: #718096;
+    -fx-border-color: #DCE4F0;
+}
+.campo:focused, .text-field:focused, .password-field:focused {
+    -fx-border-color: #3478F6;
+    -fx-effect: dropshadow(gaussian, rgba(52,120,246,0.14), 8, 0.1, 0, 1);
+}
+.inicio-eyebrow, .inicio-passo { -fx-text-fill: #3478F6; }
+.inicio-passo { -fx-background-color: #EAF1FF; }
+.pdv-valor-grande, .pdv-subtotal { -fx-text-fill: #3478F6; }
+.pdv-quadro-carrinho { -fx-background-color: #EAF1FF; -fx-border-color: #DCE4F0; }
+.table-view .column-header-background, .table-view .column-header, .table-view .filler { -fx-background-color: #F3F6FC; }
+.table-view .column-header .label { -fx-text-fill: #234478; }
+.table-row-cell:odd { -fx-background-color: #F8FAFD; }
+.table-row-cell:selected { -fx-background-color: #EAF1FF; }
